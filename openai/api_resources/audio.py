@@ -45,7 +45,7 @@ class Audio(APIResource):
         cls,
         model,
         file,
-        filename
+        filename,
         api_key=None,
         api_base=None,
         api_type=None,
