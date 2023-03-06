@@ -45,6 +45,7 @@ class Audio(APIResource):
         cls,
         model,
         file,
+        filename
         api_key=None,
         api_base=None,
         api_type=None,
@@ -52,7 +53,7 @@ class Audio(APIResource):
         organization=None,
         **params,
     ):
-        requestor, files, data = cls._prepare_request(file, file.name, model, **params)
+        requestor, files, data = cls._prepare_request(file, f"{filename}.wav", model, **params)
         url = cls._get_url("transcriptions")
         response, _, api_key = requestor.request("post", url, files=files, params=data)
         return util.convert_to_openai_object(
